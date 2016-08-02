@@ -1,30 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lesson 1</title>
-    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-
     <div id="app">
-        <h1>{{ message }}</h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
 
-        <input type="text" v-model="message"/>
+                    <h1>{{ message }}</h1>
 
-        <pre>{{ $data | json }}</pre>
+                    <input type="text" v-model="message"/>
 
+                    <hr/>
+
+                    <pre>{{ $data | json }}</pre>
+
+                </div>
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
     <script type="text/javascript">
-        new Vue({
-            el: '#app',
-            data: {
-                message: 'Hello World'
-            }
-        });
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello World'
+        }
+    });
     </script>
 </body>
 </html>
