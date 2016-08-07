@@ -1,0 +1,20 @@
+#app {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.table {
+    display: table;
+}
+
+.table-row {
+    display: table-row;
+}
+
+.table-col {
+    display: table-cell;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}

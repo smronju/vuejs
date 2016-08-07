@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exercise - 1</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table">
+                        <div class="table-row" v-for="plan in plans">
+                            <plan :plan="plan" :active.sync="active"></plan>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <template id="plan-template">
+        <div class="table-col">{{ plan.name }}</div>
+        <div class="table-col">{{ plan.price }}</div>
+        <div class="table-col">
+            <button @click.sync="setActivePlan" v-if="plan.name !== active.name">{{ isUpgrade ? 'Updgrade' : 'Downgrade' }}</button>
+            <button v-else>Current</button>
+        </div>
+    </template>
+
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                plans: [
+                    { name: 'Enterprise', price: 100 },
+                    { name: 'Pro', price: 50 },
+                    { name: 'Personal', price: 10 },
+                    { name: 'Free', price: 0 }
+                ],
+                active: {}
+            },
+            components: {
+                plan: {
+                    template: '#plan-template',
+                    props: ['plan', 'active'],
+                    methods: {
+                        setActivePlan: function () {
+                            this.active = this.plan;
+                        }
+                    },
+                    computed: {
+                        isUpgrade: function () {
+                            return this.plan.price > this.active.price;
+                        }
+                    }
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>
